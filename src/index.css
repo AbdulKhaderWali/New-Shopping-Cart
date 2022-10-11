@@ -1,13 +1,71 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+
+*{
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Urbanist', sans-serif;
+}
+body{
+  background-color: #00719c;
+}
+.navbar{
+  width: 100%;
+  height: 6rem;
+  display: grid;
+  grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
+  background-color: 	#00415a;
+  color: #FFFFF0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.logo{
+  display: flex;
+  grid-column: 2/3;
+  align-items: center;
+  justify-content: center;
+}
+
+ul{
+  list-style: none;
+  grid-column: 3/4;
+}
+
+.links ul{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.login{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button{
+  background-color: 	#001f2b;
+  color: 	#FFFFF0;
+}
+
+/* singlecard */
+.box{
+  background-color: #001f2b;
+  color: #FFFFF0;
+  height: 10rem;
+  cursor: pointer;
+}
+
+.box p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+/* cards */
+.cards{
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5rem 15rem;
 }
