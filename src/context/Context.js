@@ -5,7 +5,7 @@ const AppContext = createContext()
 const initialState = {
     categories : [],
     products : [],
-    category : "",
+    selectedCategory : "",
 }
 export default function Context({children}) {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -16,11 +16,12 @@ export default function Context({children}) {
         .then(data => dispatch({type: `SET_CATEGORIES`, payload: data}))
         }
 
-        function fetchProducts(category) {
-            fetch(`https://fakestoreapi.com/products/category/${category}`)
+        function fetchProducts(selectedCategory) {
+            fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
             .then(response => response.json())
             .then(data => dispatch({type: `SET_PRODUCTS`, payload: data}))
             }
+
     useEffect(() => {
         fetchData()
         fetchProducts()
@@ -36,5 +37,4 @@ export default function Context({children}) {
 const useProductContext = () => {
     return useContext(AppContext)
 } 
-
 export {useProductContext}
