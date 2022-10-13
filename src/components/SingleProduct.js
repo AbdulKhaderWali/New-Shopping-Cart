@@ -1,12 +1,9 @@
-import { useProductContext } from '../context/Context'
-
 import React from 'react'
 
-export default function SingleProduct() {
-  const {category} = useProductContext()
-    return (
+export default function SingleProduct(props) {
+  return (
     <div>
-        
+        {props.title}
     </div>
   )
 }

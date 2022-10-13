@@ -17,6 +17,7 @@ export default function Context({children}) {
         }
 
         function fetchProducts(selectedCategory) {
+            console.log(selectedCategory)
             fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
             .then(response => response.json())
             .then(data => dispatch({type: `SET_PRODUCTS`, payload: data}))
@@ -24,10 +25,9 @@ export default function Context({children}) {
 
     useEffect(() => {
         fetchData()
-        fetchProducts()
         },[])
     return (
-    <AppContext.Provider value={{...state}}>
+    <AppContext.Provider value={{...state, fetchProducts}}>
         {children}
     </AppContext.Provider>
   )
