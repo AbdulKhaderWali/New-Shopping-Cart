@@ -5,7 +5,7 @@ const AppContext = createContext()
 const initialState = {
     categories : [],
     products : [],
-    selectedCategory : "",
+    cart : [],
 }
 export default function Context({children}) {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -23,11 +23,17 @@ export default function Context({children}) {
             .then(data => dispatch({type: `SET_PRODUCTS`, payload: data}))
             }
 
+            function addProduct(id,count){
+                console.log(id,count)
+                dispatch({type: "ADD_PRODUCT", payload:{id,count}})
+                console.log(id,count)
+            }
+
     useEffect(() => {
         fetchData()
         },[])
     return (
-    <AppContext.Provider value={{...state, fetchProducts}}>
+    <AppContext.Provider value={{...state, fetchProducts, addProduct}}>
         {children}
     </AppContext.Provider>
   )

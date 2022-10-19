@@ -38,6 +38,11 @@ ul{
   height: 100%;
 }
 
+.text-decoration{
+  text-decoration: inherit;
+  color: inherit;
+}
+
 .login{
   display: flex;
   justify-content: space-around;
@@ -46,7 +51,10 @@ ul{
 
 button{
   background-color: 	#001f2b;
+  padding: 0.3rem 0.7rem;
   color: 	#FFFFF0;
+  cursor: pointer;
+  border-radius: 1rem;
 }
 
 /* singlecard */
@@ -70,3 +78,33 @@ button{
   grid-template-columns: 1fr 1fr 1fr;
   margin: 5rem 15rem;
 }
+
+/* single product */
+.product_card{
+ margin: 1.5rem;
+ background-color: #00415a;
+}
+.product_img img{
+ display: block;
+ width: 100%;
+ aspect-ratio: 12/13;
+}
+
+.product_footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+}
+
+.product_footer button{
+  padding: 0.3rem 0.7rem;
+}
+
+/* All products */
+.all_products{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 5rem;
+}
+

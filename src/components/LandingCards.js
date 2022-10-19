@@ -9,7 +9,7 @@ export default function LandingCards() {
     <div className='cards'>
       {categories.map((e) => {
         return(
-          <SingleCard key={e} title = {e.toUpperCase()}/>
+          <SingleCard key = {e} title = {e.toUpperCase()}/>
         )
       } )}
     </div>

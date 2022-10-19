@@ -9,7 +9,7 @@ export default function Navbar() {
         </div>
         <div className='links'>
           <ul>
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/" className='text-decoration'>Home</Link></li>
             <li>Cart</li>
             <li>Icon</li>
           </ul>
