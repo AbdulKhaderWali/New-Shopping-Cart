@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "../index.css"
 import { useProductContext } from '../context/Context'
 export default function SingleProduct(props) {
   const {addProduct,cart} = useProductContext()
-  const [count,setCount] = useState(1)
+  // const [count,setCount] = useState(1)
   function handleAdd(){
-    setCount((prevCount) => (prevCount+1))
-    addProduct(props.id,count)
+    // setCount((prevCount) => (prevCount+1))
+    addProduct(props.id)
     console.log(cart)
   }
   return (
@@ -16,9 +16,7 @@ export default function SingleProduct(props) {
         <div className='product_description'>{props.description.slice(0,30)}...</div>
         <div className='product_rating'>{props.rating}</div>
         <div className='product_footer'>
-          <button>-</button>
-          {/* <div>{props.count}</div> */}
-          <button onClick={handleAdd}>+</button>
+          <button onClick={handleAdd}>Add to Cart</button>
         </div>
     </div>
   )

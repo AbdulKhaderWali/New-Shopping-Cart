@@ -8,18 +8,23 @@ const reducer = (state, action) => {
             return{...state,
                     products: action.payload
                 }
-        case "ADD_PRODUCT":
-            const exist = state.cart.includes((i) => i.id===action.payload.id)
-            console.log(exist)
-            if(exist){
-                return state.cart.map((i) => 
-                 i.id===action.payload.id ? i.count = action.payload.count : i
-                )
+        case "ADD_TO_CART":
+            const found = state.cart.find((item) => item === action.payload)
+            console.log(action.payload)
+            if (!found) {
+                    return{
+                        ...state,
+                        cart: [...state.cart,action.payload]
+
+                    }
             }
-            else{
-            return state.cart.push(action.payload)
-        
-            }    
+            return state;
+
+        case "SET_CART": 
+            return{
+                ...state,
+                cartProducts : [...state.cartProducts,action.payload]
+            }
         default:
             return state;
     }

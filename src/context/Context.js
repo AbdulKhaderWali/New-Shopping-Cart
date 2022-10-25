@@ -6,6 +6,7 @@ const initialState = {
     categories : [],
     products : [],
     cart : [],
+    cartProducts : [],
 }
 export default function Context({children}) {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -23,17 +24,21 @@ export default function Context({children}) {
             .then(data => dispatch({type: `SET_PRODUCTS`, payload: data}))
             }
 
-            function addProduct(id,count){
-                console.log(id,count)
-                dispatch({type: "ADD_PRODUCT", payload:{id,count}})
-                console.log(id,count)
+            function addProduct(id){
+                dispatch({type: "ADD_TO_CART", payload:id})
+            }
+
+            function fetchCart(id){
+            fetch(`https://fakestoreapi.com/products/${id}`)
+            .then(response => response.json())
+            .then(data => dispatch({type: `SET_CART`, payload: data}))
             }
 
     useEffect(() => {
         fetchData()
         },[])
     return (
-    <AppContext.Provider value={{...state, fetchProducts, addProduct}}>
+    <AppContext.Provider value={{...state, fetchProducts, addProduct, fetchCart}}>
         {children}
     </AppContext.Provider>
   )
