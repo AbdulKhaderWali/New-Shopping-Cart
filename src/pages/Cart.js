@@ -2,15 +2,16 @@ import React from 'react'
 import CartItems from '../components/CartItems'
 import { useProductContext } from '../context/Context'
 export default function Cart() {
-  const {cartProducts} = useProductContext()
+  const {cart} = useProductContext()
   return(
 
   <div>
     {
-      cartProducts.map((data) => {
+      cart.map((data) => {
         return(
           <CartItems
           key={data.id}
+          id = {data.id}
           title = {data.title}
           img = {data.img}
           

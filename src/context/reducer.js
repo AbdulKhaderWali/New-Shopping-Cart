@@ -9,8 +9,7 @@ const reducer = (state, action) => {
                     products: action.payload
                 }
         case "ADD_TO_CART":
-            const found = state.cart.find((item) => item === action.payload)
-            console.log(action.payload)
+            const found = state.cart.find((item) => item.id === action.payload.id)
             if (!found) {
                     return{
                         ...state,
@@ -20,11 +19,13 @@ const reducer = (state, action) => {
             }
             return state;
 
-        case "SET_CART": 
-            return{
-                ...state,
-                cartProducts : [...state.cartProducts,action.payload]
-            }
+        // case "SET_CART": 
+        
+        //         return{
+        //             ...state,
+        //             cart: [...state.cart,action.payload]
+
+        //         }
         default:
             return state;
     }

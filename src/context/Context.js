@@ -18,27 +18,20 @@ export default function Context({children}) {
         }
 
         function fetchProducts(selectedCategory) {
-            console.log(selectedCategory)
             fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
             .then(response => response.json())
             .then(data => dispatch({type: `SET_PRODUCTS`, payload: data}))
             }
 
-            function addProduct(id){
-                dispatch({type: "ADD_TO_CART", payload:id})
-            }
-
-            function fetchCart(id){
-            fetch(`https://fakestoreapi.com/products/${id}`)
-            .then(response => response.json())
-            .then(data => dispatch({type: `SET_CART`, payload: data}))
+            function addProduct(data){
+                dispatch({type: "ADD_TO_CART", payload:data})
             }
 
     useEffect(() => {
         fetchData()
         },[])
     return (
-    <AppContext.Provider value={{...state, fetchProducts, addProduct, fetchCart}}>
+    <AppContext.Provider value={{...state, fetchProducts, addProduct}}>
         {children}
     </AppContext.Provider>
   )
