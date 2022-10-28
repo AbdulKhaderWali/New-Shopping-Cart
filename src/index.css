@@ -108,3 +108,22 @@ button{
   gap: 0.2rem;
 }
 
+/* Cart */
+table{
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 8rem;
+}
+
+tbody tr td{
+  text-align: center;
+}
+
+table img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin: 1rem;
+}

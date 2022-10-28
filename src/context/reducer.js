@@ -1,4 +1,5 @@
 const reducer = (state, action) => {
+    let items = []
     switch (action.type) {
         case "SET_CATEGORIES":
         return{...state,
@@ -17,7 +18,13 @@ const reducer = (state, action) => {
 
                     }
             }
-            return state;
+            else{
+                items = state.cart.filter(item => item.id!==action.payload.id)
+                return{
+                    ...state,
+                    cart : items
+                }
+            }
 
         // case "SET_CART": 
         

@@ -16,6 +16,7 @@ export default function AllProducts() {
              description = {e.description}
              rating = {e.rating.rate}
              img = {e.image}
+             price = {e.price}
              />
          
         )

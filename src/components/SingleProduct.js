@@ -2,13 +2,11 @@ import React, { useState } from 'react'
 import "../index.css"
 import { useProductContext } from '../context/Context'
 export default function SingleProduct(props) {
-  const {addProduct,cart} = useProductContext()
-  // const [count,setCount] = useState(1)
+  const {addProduct} = useProductContext()
   const [available, setAvailable] = useState(false)
   function handleAdd(){
-    // setCount((prevCount) => (prevCount+1))
     addProduct(props)
-    setAvailable(() => (cart.includes(props.id)))
+    setAvailable((prevState) => (!prevState))
   }
   return (
     <div className='product_card'>
