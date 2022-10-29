@@ -27,11 +27,14 @@ export default function Context({children}) {
                 dispatch({type: "ADD_TO_CART", payload:data})
             }
 
+            function deleteProduct(data){
+                dispatch({type: "REMOVE_FROM_CART", payload:data})
+            }
     useEffect(() => {
         fetchData()
         },[])
     return (
-    <AppContext.Provider value={{...state, fetchProducts, addProduct}}>
+    <AppContext.Provider value={{...state, dispatch, fetchProducts, addProduct,deleteProduct}}>
         {children}
     </AppContext.Provider>
   )

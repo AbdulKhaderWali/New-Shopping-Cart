@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "../index.css"
 import { useProductContext } from '../context/Context'
 export default function SingleProduct(props) {
-  const {addProduct} = useProductContext()
-  const [available, setAvailable] = useState(false)
+  const {addProduct,deleteProduct,cart} = useProductContext()
   function handleAdd(){
     addProduct(props)
-    setAvailable((prevState) => (!prevState))
+  }
+  function handleDel(){
+    deleteProduct(props)
   }
   return (
     <div className='product_card'>
@@ -15,7 +16,12 @@ export default function SingleProduct(props) {
         <div className='product_description'>{props.description.slice(0,30)}...</div>
         <div className='product_rating'>{props.rating}</div>
         <div className='product_footer'>
-          <button onClick={handleAdd}>{available ? "Remove from Cart" : "Add to Cart"}</button>
+          {cart.some((p) => p.id === props.id) ? (
+            <button className='danger' onClick={handleDel}>Remove from Cart</button>
+          ) : (
+            <button onClick={handleAdd}>Add to Cart</button>
+          )}
+          
         </div>
     </div>
   )

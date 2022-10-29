@@ -25,7 +25,7 @@ export default function Cart() {
           title = {data.title}
           img = {data.img}
           price = {data.price}
-          
+          qty = {data.qty}
           />
         )
       })

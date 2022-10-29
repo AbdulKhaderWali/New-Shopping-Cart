@@ -1,5 +1,4 @@
 const reducer = (state, action) => {
-    let items = []
     switch (action.type) {
         case "SET_CATEGORIES":
         return{...state,
@@ -14,25 +13,21 @@ const reducer = (state, action) => {
             if (!found) {
                     return{
                         ...state,
-                        cart: [...state.cart,action.payload]
+                        cart: [...state.cart,{...action.payload, qty:1}]
 
                     }
             }
-            else{
-                items = state.cart.filter(item => item.id!==action.payload.id)
-                return{
-                    ...state,
-                    cart : items
-                }
+            return state;
+        case "REMOVE_FROM_CART" :
+            return{
+                ...state,
+                cart : state.cart.filter(item => item.id!==action.payload.id)
             }
-
-        // case "SET_CART": 
-        
-        //         return{
-        //             ...state,
-        //             cart: [...state.cart,action.payload]
-
-        //         }
+        case "ADD_QUANTITY":
+            return{
+             ...state,
+               
+            } 
         default:
             return state;
     }
