@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useProductContext } from '../context/Context'
 import "../index.css"
 
 export default function CartItems(props) {
+  const [quantity,setQuantity] = useState(1)
   const {dispatch} = useProductContext()
   function handleAdd(){
-    console.log("HandleAdd clicked")
-    dispatch({type: "INCREMENT_QUANTITY", payload:props.id})
+    dispatch({type: "INCREMENT_QUANTITY", payload:{id:props.id,qty:quantity}})
+    setQuantity(props.qty)
   }
   function handleDel(){
-    console.log("HandleDel clicked")
+    dispatch({type: "DECREMENT_QUANTITY", payload:{id:props.id,qty:quantity}})
+    setQuantity(props.qty)
+
+
   }
   function handleRemove(){
-    console.log("Item removed")
     dispatch({type: "REMOVE_FROM_CART", payload:{id: props.id,}})
   }
   return (

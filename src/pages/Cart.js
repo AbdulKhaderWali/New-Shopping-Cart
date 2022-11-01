@@ -4,7 +4,6 @@ import { useProductContext } from '../context/Context'
 import "../index.css"
 export default function Cart() {
   const {cart} = useProductContext()
-  console.log(cart)
   return(
     <div>
       {cart.length===0? <div className='empty__cart'>
