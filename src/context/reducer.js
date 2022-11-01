@@ -23,11 +23,19 @@ const reducer = (state, action) => {
                 ...state,
                 cart : state.cart.filter(item => item.id!==action.payload.id)
             }
-        case "ADD_QUANTITY":
-            return{
-             ...state,
-               
-            } 
+        case "INCREMENT_QUANTITY":
+        console.log(action.payload)    
+        return{
+                ...state,
+                cart : [state.cart.forEach(item => 
+                    item.id===action.payload? {
+                        ...item,
+                        qty:item.qty+1,
+                    }: item
+                )]
+            }
+        case "DECREMENT_QUANTITY":
+            break
         default:
             return state;
     }

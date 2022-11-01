@@ -6,10 +6,14 @@ export default function CartItems(props) {
   const {dispatch} = useProductContext()
   function handleAdd(){
     console.log("HandleAdd clicked")
-    dispatch({type: "ADD_QUANTITY", payload: props.id})
+    dispatch({type: "INCREMENT_QUANTITY", payload:props.id})
   }
   function handleDel(){
     console.log("HandleDel clicked")
+  }
+  function handleRemove(){
+    console.log("Item removed")
+    dispatch({type: "REMOVE_FROM_CART", payload:{id: props.id,}})
   }
   return (
     <tbody>
@@ -24,7 +28,7 @@ export default function CartItems(props) {
           <button onClick={handleAdd}>+</button>
         </div>
       </td>
-      <td></td>
+      <td><button onClick={handleRemove}>Delete</button></td>
     </tr>
     </tbody>
   )
