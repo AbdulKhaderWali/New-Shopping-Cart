@@ -31,6 +31,11 @@ export default function CartItems(props) {
           <button onClick={handleAdd}>+</button>
         </div>
       </td>
+      <td>
+        <div>
+          {props.price*props.qty}
+        </div>
+      </td>
       <td><button onClick={handleRemove}>Delete</button></td>
     </tr>
     </tbody>

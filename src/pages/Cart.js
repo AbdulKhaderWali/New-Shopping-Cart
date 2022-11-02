@@ -4,6 +4,7 @@ import { useProductContext } from '../context/Context'
 import "../index.css"
 export default function Cart() {
   const {cart} = useProductContext()
+  console.log(cart)
   return(
     <div>
       {cart.length===0? <div className='empty__cart'>
@@ -17,6 +18,7 @@ export default function Cart() {
       <th>price</th>
       <th>Quantity</th>
       <th>Total</th>
+      <th></th>
     </tr>
     </thead>
     {
@@ -33,6 +35,21 @@ export default function Cart() {
         )
       })
     }
+    <tfoot>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td style={{textAlign:"center",color:"white"}}>Grand Total : </td>
+      <td style={{textAlign:"center",color:"white"}}>$ {
+          cart.reduce((accumulator, object) => {
+            return accumulator + (object.qty * object.price);
+          }, 0)
+        }
+      </td>
+    </tr>
+    </tfoot>
   </table>
 }
     </div>

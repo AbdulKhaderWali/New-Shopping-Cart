@@ -30,6 +30,7 @@ body{
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  text-decoration: none;
 }
 
 ul{
@@ -54,6 +55,7 @@ ul{
   justify-content: space-around;
   align-items: center;
 }
+
 
 button{
   background-color: 	#001f2b;
@@ -162,6 +164,14 @@ table img{
   font-weight: bolder;
 }
 
+.homepage__buttons{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: inherit;
+}
+
+/* cart */
 .empty__cart{
   display: flex;
   align-items: center;
