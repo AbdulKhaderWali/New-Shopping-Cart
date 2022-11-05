@@ -8,7 +8,7 @@ export default function SingleCard(props) {
     fetchProducts(props.title.toLowerCase())
   }
   return (
-    <Link to="/products">
+    <Link to="/products" className='single-card-link'>
     <div className='box' onClick={handleClick}>
     <p>{props.title}</p>
     </div>

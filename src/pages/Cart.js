@@ -9,7 +9,7 @@ export default function Cart() {
     <div>
       {cart.length===0? <div className='empty__cart'>
         Your Cart is Empty !
-      </div>: 
+    </div>: 
   <table className='cart__table'>
     <thead>
     <tr>
@@ -41,8 +41,8 @@ export default function Cart() {
       <td></td>
       <td></td>
       <td></td>
-      <td style={{textAlign:"center",color:"white"}}>Grand Total : </td>
-      <td style={{textAlign:"center",color:"white"}}>$ {
+      <td style={{textAlign:"center",color:"black"}}>Grand Total : </td>
+      <td style={{textAlign:"center",color:"black"}}>$ {
           cart.reduce((accumulator, object) => {
             return accumulator + (object.qty * object.price);
           }, 0)
