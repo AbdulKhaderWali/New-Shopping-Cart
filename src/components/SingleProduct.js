@@ -2,13 +2,17 @@ import React from 'react'
 import "../index.css"
 import {AiFillStar} from 'react-icons/ai'
 import { useProductContext } from '../context/Context'
+import { Link } from 'react-router-dom'
 export default function SingleProduct(props) {
-  const {addProduct,deleteProduct,cart} = useProductContext()
+  const {addProduct,deleteProduct,cart,dispatch} = useProductContext()
   function handleAdd(){
     addProduct(props)
   }
   function handleDel(){
     deleteProduct(props)
+  }
+  function handleDetail(){
+    dispatch({type:'SINGLE_PRODUCT_DETAILS',payload: props})
   }
   return (
     <div className='product_card'>
@@ -22,7 +26,7 @@ export default function SingleProduct(props) {
           ) : (
             <button onClick={handleAdd}>Add to Cart</button>
           )}
-          
+          <Link to="/details"><button onClick = {handleDetail}>View More</button></Link>
         </div>
     </div>
   )

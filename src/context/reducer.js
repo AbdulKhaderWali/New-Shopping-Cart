@@ -43,6 +43,12 @@ const reducer = (state, action) => {
                     }: item
                 ): state.cart.filter(item => item.id!==action.payload.id)
             }
+
+        case "SINGLE_PRODUCT_DETAILS": 
+        return{
+                ...state,
+                productDetail : action.payload
+            }
         default:
             return state;
     }
