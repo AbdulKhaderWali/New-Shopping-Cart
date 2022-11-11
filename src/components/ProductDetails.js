@@ -6,6 +6,7 @@ import "../index.css"
 import { Link } from 'react-router-dom'
 export default function ProductDetails() {
     const {productDetail,cart,addProduct,deleteProduct} = useProductContext()
+    const description = productDetail.description.split(/[.,;]+\s/)
     function handleAdd(){
       addProduct(productDetail)
     }
@@ -14,16 +15,23 @@ export default function ProductDetails() {
     }
   return (
     <div className='details_main'>
+     <div className='product_detail_left'>
+     <div className='like'>
+       <RiHeart3Fill />
+      </div>
       <div className='single_image'>
         <img src={productDetail.img} alt={productDetail.title} />
+      </div>
       </div>
       <div className='top_bottom'>
         <div className='top'>
           <div>
-            <h2>{productDetail.title}</h2>
-            <p>{productDetail.description}</p>
-          </div>
           <h1>$ {productDetail.price}</h1>
+            <h2>{productDetail.title}</h2>
+            <ul>
+              {description.map((text,index) => {return(<li key={index}>{text}</li>)})}
+            </ul>
+          </div>
           <div className='size'>
             <ul>
               <li>S</li>
@@ -33,7 +41,7 @@ export default function ProductDetails() {
               <li>XXL</li>
             </ul>
           </div>
-          <div>
+          <div className='product_detail_rating'>
           <AiFillStar className='filled_star' /> {productDetail.rating}
           </div>
         </div>
@@ -45,7 +53,7 @@ export default function ProductDetails() {
             <button onClick={handleAdd}>Add to Cart</button>
           )}
           <Link to="/cart"><button>Checkout</button></Link>
-          <RiHeart3Fill />
+          
         </div>
       </div>
     </div>
