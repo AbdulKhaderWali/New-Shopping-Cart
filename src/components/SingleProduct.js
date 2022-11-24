@@ -14,6 +14,9 @@ export default function SingleProduct(props) {
   function handleDetail(){
     dispatch({type:'SINGLE_PRODUCT_DETAILS',payload: props})
   }
+  function addWishlist(){
+    dispatch({type:'ADD_TO_WISHLIST',payload:props})
+  }
   return (
     <div className='product_card'>
         <div className='product_img'><img src={props.img} alt={props.title}/></div>
@@ -27,6 +30,7 @@ export default function SingleProduct(props) {
             <button onClick={handleAdd}>Add to Cart</button>
           )}
           <Link to="/details"><button onClick = {handleDetail}>View More</button></Link>
+          <button onClick={addWishlist}>Add to Wishlist</button>
         </div>
     </div>
   )

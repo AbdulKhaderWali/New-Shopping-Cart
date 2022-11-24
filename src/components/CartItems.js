@@ -19,7 +19,7 @@ export default function CartItems(props) {
     dispatch({type: "REMOVE_FROM_CART", payload:{id: props.id,}})
   }
   return (
-    <tbody>
+    <tbody className='cart__body'>
     <tr>
       <td><img src={props.img} alt={props.title}/></td>
       <td>{props.title}</td>

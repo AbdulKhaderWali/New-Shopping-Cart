@@ -49,6 +49,21 @@ const reducer = (state, action) => {
                 ...state,
                 productDetail : action.payload
             }
+        case "ADD_TO_WISHLIST":
+            const inWishlist = state.wishlist.find((item) => item.id === action.payload.id)
+            if (!inWishlist) {
+                    return{
+                        ...state,
+                        wishlist: [...state.wishlist,action.payload]
+
+                    }
+            }
+            return state;
+        case "REMOVE_FROM_WISHLIST":
+            return{
+                ...state,
+                wishlist : state.wishlist.filter(item => item.id!==action.payload.id)
+            }
         default:
             return state;
     }

@@ -17,7 +17,7 @@ export default function Navbar() {
             <ul className='navbar' ref={navRef}>
               <li><Link to="/categories">Categories</Link></li>
               <li><Link to="/cart">Cart ({cart.length})</Link></li>
-              <li><Link to="/">Icon</Link></li>
+              <li><Link to="/wishlist">Wishlist</Link></li>
             </ul>
           <div className='main'>
             <button><AiOutlineUserAdd/>Login</button>
