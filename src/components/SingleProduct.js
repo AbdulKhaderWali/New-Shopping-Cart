@@ -4,7 +4,7 @@ import {AiFillStar} from 'react-icons/ai'
 import { useProductContext } from '../context/Context'
 import { Link } from 'react-router-dom'
 export default function SingleProduct(props) {
-  const {addProduct,deleteProduct,cart,dispatch} = useProductContext()
+  const {addProduct,deleteProduct,cart,dispatch,wishlist} = useProductContext()
   function handleAdd(){
     addProduct(props)
   }
@@ -16,6 +16,9 @@ export default function SingleProduct(props) {
   }
   function addWishlist(){
     dispatch({type:'ADD_TO_WISHLIST',payload:props})
+  }
+  function remWishlist(){
+    dispatch({type:'REMOVE_FROM_WISHLIST',payload:props})
   }
   return (
     <div className='product_card'>
@@ -30,7 +33,11 @@ export default function SingleProduct(props) {
             <button onClick={handleAdd}>Add to Cart</button>
           )}
           <Link to="/details"><button onClick = {handleDetail}>View More</button></Link>
-          <button onClick={addWishlist}>Add to Wishlist</button>
+          {wishlist.some((p) => p.id === props.id) ? (
+            <button className='danger' onClick={remWishlist}>Remove from Wishlist</button>
+          ) : (
+            <button onClick={addWishlist}>Add to Wishlist</button>
+          )}
         </div>
     </div>
   )

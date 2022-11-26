@@ -2,17 +2,20 @@ import React from 'react'
 import "../index.css"
 import {RiHeart3Fill} from 'react-icons/ri'
 import {AiFillStar,AiFillDelete} from 'react-icons/ai'
-import {BsCartPlusFill} from'react-icons/bs'
+import {BsCartPlusFill,BsCartXFill} from'react-icons/bs'
 import { useProductContext } from '../context/Context'
 
 
 export default function WishlistItem(props) {
-  const {dispatch} = useProductContext()
+  const {dispatch,cart} = useProductContext()
   function handleAdd(){
     dispatch({type:"ADD_TO_CART",payload:props})
   }
   function handleDel(){
     dispatch({type:"REMOVE_FROM_WISHLIST",payload:props})
+  }
+  function cartDel(){
+    dispatch({type: "REMOVE_FROM_CART", payload:{id: props.id,}})
   }
   return (
     <div className='wishlist_item'>
@@ -32,7 +35,7 @@ export default function WishlistItem(props) {
         </div>
           <div className='wishlist_buttons'>
             <div className='add' onClick={handleAdd}>
-            <BsCartPlusFill />
+              {cart.some(item => item.id === props.id) ? <BsCartXFill style={{color:"red"}} onClick={cartDel}/> : <BsCartPlusFill />}
             </div>
             <div className='del' onClick={handleDel}>
             <AiFillDelete />
