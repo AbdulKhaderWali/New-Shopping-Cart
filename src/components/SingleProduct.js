@@ -25,7 +25,8 @@ export default function SingleProduct(props) {
         <div className='product_img'><img src={props.img} alt={props.title}/></div>
         <div className='product_title'>{props.title.slice(0,40)}</div>
         {/* <div className='product_description'>{props.description.slice(0,30)}...</div> */}
-        <div className='product_rating'><AiFillStar className='filled_star'/>{props.rating}</div>
+        <div className='product_rating' style={{display:"flex",justifyContent:"center",alignItems:"center"}}><div><AiFillStar className='filled_star'/>{props.rating}</div> $ {props.price}</div>
+        
         <div className='product_footer'>
           {cart.some((p) => p.id === props.id) ? (
             <button className='danger' onClick={handleDel}>Remove from Cart</button>

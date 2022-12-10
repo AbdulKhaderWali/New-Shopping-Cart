@@ -70,3 +70,25 @@ const reducer = (state, action) => {
 }
 
 export default reducer
+
+export const filterReducer = (state,action) => {
+    switch(action.type){
+        case "PRICE_SORT":
+            return{
+                ...state,
+                priceSort: action.payload
+            }
+        case "CLEAR_FILTERS":
+            return{
+                priceSort : "none",
+                rating : false,
+            }
+        case "SET_RATING":
+            return{
+                ...state,
+                rating: action.payload
+            }
+        default:
+            return state;
+    }
+}

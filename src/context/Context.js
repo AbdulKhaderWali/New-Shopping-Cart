@@ -1,5 +1,5 @@
 import React, { createContext, useContext,useEffect, useReducer } from 'react'
-import reducer from './reducer'
+import reducer, { filterReducer } from './reducer'
 const AppContext = createContext()
 // const API = "https://fakestoreapi.com/products"
 const initialState = {
@@ -12,7 +12,10 @@ const initialState = {
 }
 export default function Context({children}) {
     const [state, dispatch] = useReducer(reducer, initialState)
-
+    const [filter,filterDispatch] = useReducer(filterReducer, {
+        priceSort : "",
+        rating : 0,
+    })
     function fetchData() {
         fetch(`https://fakestoreapi.com/products/categories`)
         .then(response => response.json())
@@ -36,7 +39,7 @@ export default function Context({children}) {
         fetchData()
         },[])
     return (
-    <AppContext.Provider value={{...state, dispatch, fetchProducts, addProduct,deleteProduct}}>
+    <AppContext.Provider value={{...state, dispatch, fetchProducts, addProduct,deleteProduct,...filter,filterDispatch}}>
         {children}
     </AppContext.Provider>
   )
