@@ -18,7 +18,6 @@ export default function Filters() {
       filterDispatch({type:"RATING_SORT",payload:value})
     }
   return (
-    <div>
         <div className='product_filters'>
         <div>
           <h3>Filters</h3>
@@ -60,6 +59,5 @@ export default function Filters() {
           <button onClick={clearFilters}>Clear Filters</button>
         </div>
         </div>
-    </div>
   )
 }

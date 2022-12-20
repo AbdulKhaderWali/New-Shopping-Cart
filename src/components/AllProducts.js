@@ -31,7 +31,6 @@ export default function AllProducts() {
              img = {e.image}
              price = {e.price}
              />
-         
         )
     })}
     </div>
