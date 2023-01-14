@@ -5,12 +5,12 @@ import "../index.css"
 export default function Cart() {
   const {cart} = useProductContext()
   return(
-    <div>
+    <div className='cart__table'>
       {cart.length===0? <div className='empty__cart'>
         Your Cart is Empty !
         <button>Shop Now</button>
     </div>: 
-  <table className='cart__table'>
+  <table className="">
     <thead>
     <tr>
       <th>Image</th>

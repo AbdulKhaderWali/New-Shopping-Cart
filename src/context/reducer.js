@@ -6,8 +6,20 @@ const reducer = (state, action) => {
             }
         case "SET_PRODUCTS":
             return{...state,
-                    products: action.payload
+                    products: action.payload,
                 }
+        case "LOADING_0":{
+            return{
+                ...state,
+                loading: false
+            }
+        }
+        case "LOADING_1":{
+            return{
+                ...state,
+                loading: true
+            }
+        }
         case "ADD_TO_CART":
             const found = state.cart.find((item) => item.id === action.payload.id)
             if (!found) {

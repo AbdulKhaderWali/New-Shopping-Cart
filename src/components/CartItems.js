@@ -21,7 +21,7 @@ export default function CartItems(props) {
   return (
     <tbody className='cart__body'>
     <tr>
-      <td><img src={props.img} alt={props.title}/></td>
+      <td className='table_img'><img src={props.img} alt={props.title}/></td>
       <td>{props.title}</td>
       <td>$ {props.price}</td>
       <td>
